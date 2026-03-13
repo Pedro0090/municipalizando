@@ -1,0 +1,48 @@
+services:
+  db:
+    image: postgres:16
+    container_name: municipalizando_container
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        MODULO: api
+    restart: unless-stopped
+    depends_on:
+      - db
+    environment:
+      DB_URL: ${DB_URL}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_USER: ${DB_USER}
+      GEOAPIFY_API_KEY: ${GEOAPIFY_API_KEY}
+    ports:
+      - "8080:8080"
+
+  etl:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        MODULO: etl
+    depends_on:
+      - db
+    environment:
+      DB_URL: ${DB_URL}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_USER: ${DB_USER}
+      GEOAPIFY_API_KEY: ${GEOAPIFY_API_KEY}
+    profiles:
+      - manual
+
+volumes:
+  db_data:

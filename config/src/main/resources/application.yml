@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: municipalizando
+
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: false
+
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+
+app:
+  geoapify:
+    key: ${GEOAPIFY_API_KEY}
+
+api:
+  title: municipalizando API
+  version: 1.0.0
+
+server:
+  port: 8080
