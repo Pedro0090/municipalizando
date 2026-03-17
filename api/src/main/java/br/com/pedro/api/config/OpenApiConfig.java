@@ -38,7 +38,10 @@ public class OpenApiConfig {
                                 - OpenStreetMap — base de dados geográficos utilizada pelo Geoapify (https://www.openstreetmap.org/)
     
                                 Para informações mais detalhadas, recomenda-se consultar diretamente as bases públicas do IBGE.
-                                Para atribuições e detalhes sobre as fontes utilizadas pela API, consulte o endpoint GET /info.""")
+                                Para atribuições e detalhes sobre as fontes utilizadas pela API, consulte o endpoint GET /info.
+                                
+                                Este projeto é open source. Código-fonte:
+                                https://github.com/Pedro0090/municipalizando""")
                         .license(
                                 new License()
                                         .name("MIT")
@@ -47,7 +50,7 @@ public class OpenApiConfig {
                 new Tag().name("Município").description("Operações referentes a municípios brasileiros"),
                 new Tag().name("Estado").description("Operações referentes a estados brasileiros"))
         ).servers(List.of(
-                        new Server().url("").description("Produção"),
+                        new Server().url("https://municipalizando.onrender.com").description("Produção"),
                         new Server().url("http://localhost:8080").description("Ambiente Local")));
     }
 }

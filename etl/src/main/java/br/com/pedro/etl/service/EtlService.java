@@ -76,10 +76,11 @@ public class EtlService {
             MunicipioDTO municipioDTO = municipioFactory.montarDTO(municipioIbgeDTO, estadoDTO);
             listaMunicipiosDTO.add(municipioDTO);
             log.debug("munipio numero {} adicionado na lista", inicio + 1);
-        log.info("DTOs construídos!");
 
             limitador.aguardar();
         }
+
+        log.info("DTOs construídos!");
         return listaMunicipiosDTO;
     }
 
