@@ -61,11 +61,11 @@ https://municipalizando.onrender.com/swagger-ui/index.html
 
 ### 2 - Iniciar a aplicação
 
-    docker-compose up
+    docker compose up
 
 Após isso, a aplicação será iniciada em containers. Para preencher o banco de dados, execute o módulo ETL:
     
-    docker-compose run --rm etl
+    docker compose run --rm etl
 
 Esse comando executa o container do ETL e remove automaticamente após a conclusão.
 
